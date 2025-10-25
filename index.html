@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale-1.0">
+  <meta name="theme-color" content="#ff6600">
+  <link rel="icon" type="image/png" href="img/logo.jpg">
+  <title>PD Services – Equipment Rental & Contracting in Bengaluru</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family:'Poppins', 'Segoe UI', sans-serif;
+      background: #fdfdfd;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .navbar-brand img {
+      height: 72px;
+      width: auto;
+    }
+    @media (max-width: 768px) {
+      .navbar-brand img { height: 50px; }
+    }
+    .nav-link {
+      font-weight: 500;
+      margin: 0 10px;
+      color: #444;
+    }
+    .nav-link:hover { color: #ff6600; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+    .hero .content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      padding: 0 15px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      color: #ff6600;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      margin-bottom: 25px;
+    }
+    .btn-hero {
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 28px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-hero:hover {
+      background: #e12e2e;
+      transform: scale(1.05);
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff6600;
+    }
+
+    /* Service Cards */
+    .service-card {
+      border: none;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      padding: 25px 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .service-card:hover { transform: translateY(-8px); }
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .service-card h5 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      margin-bottom: 0;
+    }
+    /* Smaller card adjustments */
+    .small-card img {
+        height: 150px;
+    }
+    .small-card p {
+        font-size: 0.9rem;
+    }
+    .small-card .btn {
+        margin-top: auto;
+        border-color: #ff6600;
+        color: #ff6600;
+    }
+    .small-card .btn:hover {
+        background: #ff6600;
+        color: #fff;
+    }
+    
+    .btn-quote {
+        background-color: #ff6600;
+        color: #fff;
+    }
+    .btn-quote:hover {
+        background-color: #e65c00;
+        color: #fff;
+    }
+
+    /* About */
+    .about {
+      background: #fff;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* Contact */
+    .form-control, .form-select {
+      border-radius: 10px;
+    }
+    .btn-submit {
+      background: #ff6600;
+      color: #fff;
+      border-radius: 25px;
+      padding: 10px 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    .btn-submit:hover {
+      background: #e12e2e;
+      color: #eee;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #eee;
+      padding: 40px 0;
+    }
+    footer a {
+      color: #ff6600;
+      text-decoration: none;
+    }
+
+    /* Sticky Call Now */
+    .call-now {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff6600;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+    .call-now:hover {
+      background: #e84615;
+      color: #eee;
+      transform: scale(1.1);
+    }
+
+    /* Custom Toast Styles */
+    .toast-container {
+      z-index: 1100;
+    }
+    .toast-header.bg-theme {
+      background-color: #ff6600 !important; /* Theme orange */
+      color: #fff;
+    }
+    /* Make the close button white */
+    .toast-header.bg-theme .btn-close,
+    .toast-header.bg-danger .btn-close {
+      filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="img/logo.jpg" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="img/back.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="content">
+    <h1>Reliable Road Construction & Equipment Rental Services</h1>
+    <p>Your one-stop solution for equipment rental and building services.</p>
+    <a href="#contact" class="btn btn-hero">Get a Free Quote</a>
+  </div>
+</section>
+
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">About Us</h2>
+    <div class="about" data-aos="fade-up">
+      <p>PD Construction – Building Strong Foundations for the Future!
+With 20+ years of experience, we specialize in layout and playground development as well as complete road construction, delivering unmatched quality you can trust.
+Our expert team ensures perfect compaction of soil, gravel, concrete, and asphalt for lasting durability.
+We also offer Road Rollers, Cranes, and JCBs for rent and lease across Bengaluru — reliable machines, timely service, and available 24/7 to meet your project needs!</p>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="py-5">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Our Core Services</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6" data-aos="fade-up">
+        <div class="service-card text-center">
+          <img src="img/Static.png" alt="Static Road Roller">
+          <h5>Static Road Rollers</h5>
+          <p>Heavy rollers using weight and steel drum pressure to compact soil, gravel, or asphalt.</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-card text-center">
+          <img src="img/vibratory-roller.png" alt="Vibratory Roller"> 
+          <h5>Vibratory Rollers</h5>
+          <p>Large drum with vibration for soil/asphalt compaction. Ideal for foundations and compact spaces.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="additional-services" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Additional Services</h2>
+      <div class="row g-4">
+          <div class="col-md-3" data-aos="fade-up">
+              <div class="service-card small-card text-center">
+                <img src="img/crane.png" alt="Cranes">
+                <h5>Cranes</h5>
+                <p>Powerful crane rentals for safe & efficient heavy lifting on any project.</p>
+                <button class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#serviceModal" data-service="crane">Know More</button>
+              </div>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-card small-card text-center">
+                <img src="img/jcb.png" alt="JCB">
+                <h5>JCB & Excavators</h5>
+                <p>Reliable JCBs & excavators for all groundwork and earthmoving tasks.</p>
+                <button class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#serviceModal" data-service="jcb">Know More</button>
+              </div>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-card small-card text-center">
+                <img src="img/interior.png" alt="Interior Designs">
+                <h5>Interior Designs</h5>
+                <p>Creative interior design to transform your home or commercial space.</p>
+                <button class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#serviceModal" data-service="interior">Know More</button>
+              </div>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-card small-card text-center">
+                  <img src="img/painting.png" alt="Painting Services">
+                  <h5>Building Painting</h5>
+                  <p>Professional painting services for a flawless, long-lasting finish.</p>
+                  <button class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#serviceModal" data-service="painting">Know More</button>
+              </div>
+          </div>
+      </div>
+    </div>
+</section>
+
+<section id="call-quote" class="py-5 text-center" style="background:#fffaf7;">
+  <div class="container">
+    <h2 class="mb-3" style="color:#ff6600; font-weight:bold;">Call for a Free Quote</h2>
+    <p class="text-dark mb-4">Fast service, Bengaluru-wide.</p>
+    <a href="tel:+918088078815" class="btn btn-lg btn-hero">
+      <i class="bi bi-telephone-fill"></i> Call Now
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
+    <form id="contactForm" data-aos="fade-up">
+      <div class="row g-3">
+        <div class="col-md-6"><input type="text" class="form-control" name="fullname" placeholder="Full Name" required></div>
+        <div class="col-md-6"><input type="email" class="form-control" name="email" placeholder="Email" required></div>
+        <div class="col-md-6"><input type="tel" class="form-control" name="phone" placeholder="Phone" required></div>
+        <div class="col-md-6"><input type="text" class="form-control" name="location" placeholder="Location in Bengaluru" required></div>
+        <div class="col-md-6">
+          <select class="form-select" name="requirementType" required>
+            <option selected disabled>Requirement Type</option>
+            <option>Rent</option><option>Lease</option><option>Contract</option><option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <select class="form-select" name="service" required>
+            <option selected disabled>Service / Equipment Needed</option>
+            <optgroup label="Core Equipment">
+              <option>Static Road Roller</option>
+              <option>Vibratory Roller</option>
+            </optgroup>
+            <optgroup label="Additional Services">
+              <option>Crane Rental</option>
+              <option>JCB / Excavator Rental</option>
+              <option>Interior Design</option>
+              <option>Building Painting</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="col-md-12"><textarea class="form-control" name="message" rows="4" placeholder="Your Message"></textarea></div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-submit mt-3">Submit Request</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h4 style="color:#ff6600;">PD Services</h4>
+        <p>Reliable Equipment Rental and Contracting Services in Bengaluru. Trusted by clients for 5+ years.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 style="color:#ff6600;">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 style="color:#ff6600;">Contact Us</h5>
+        <p><i class="bi bi-telephone-fill"></i> <a href="tel:+918088078815">+91 80880 78815</a></p>
+        <p><i class="bi bi-telephone-fill"></i> <a href="tel:+916362520126">+91 63625 20126</a></p>
+        <p><i class="bi bi-envelope-fill"></i> <a href="mailto:pdconstructions7@gmail.com">pdconstructions7@gmail.com</a></p>
+        <p><i class="bi bi-geo-alt-fill"></i> Bengaluru, Karnataka, India</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="serviceModalLabel" style="color: #ff6600;"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="serviceModalBody">
+        </div>
+      <div class="modal-footer justify-content-end">
+        <a href="tel:+918088078815" class="btn btn-success me-2"><i class="bi bi-telephone-fill"></i> Call Now</a>
+        <a href="#" id="modalGetQuoteBtn" class="btn btn-quote"><i class="bi bi-chat-left-text-fill"></i> Get Quote</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="tel:+918088078815" class="call-now">📞 Call Now</a>
+
+<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+
+  <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-theme text-white">
+      <i class="bi bi-check-circle-fill me-2"></i>
+      <strong class="me-auto">Success!</strong>
+      <small>Just now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Message Sent! Thank you for reaching out. We will be in touch with you shortly.
+    </div>
+  </div>
+
+  <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-danger text-white">
+      <i class="bi bi-x-circle-fill me-2"></i>
+      <strong class="me-auto">Error</strong>
+      <small>Just now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Something went wrong. Please try again.
+    </div>
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 1000, once: true });</script>
+
+<script>
+// Initialize Toasts
+const successToastEl = document.getElementById('successToast');
+const successToast = new bootstrap.Toast(successToastEl);
+const errorToastEl = document.getElementById('errorToast');
+const errorToast = new bootstrap.Toast(errorToastEl);
+
+// Logic for Form Submission to Google Sheets
+const contactForm = document.getElementById('contactForm');
+const submitButton = contactForm.querySelector('button[type="submit"]');
+// This is the SCRIPT_URL from the file you uploaded
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMs6rQuNPGBWs5nNZnQD6a31wo1OyvdbFcNXX8RSFZub4kB2saId4p_8-toHOLbCMl/exec'; 
+
+contactForm.addEventListener('submit', function (e) {
+  e.preventDefault(); // Stop the default form submission
+  
+  // Disable button to prevent double-clicks
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+
+  const formData = new FormData(contactForm);
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.result === 'success') {
+      successToast.show(); // Show success toast
+      contactForm.reset();
+    } else {
+      errorToast.show(); // Show error toast
+    }
+  })
+  .catch(error => {
+    // Handle network errors
+    console.error('Error:', error);
+    errorToast.show(); // Show error toast
+  })
+  .finally(() => {
+    // Re-enable the button
+    submitButton.disabled = false;
+    submitButton.textContent = 'Submit Request';
+  });
+});
+
+// STRONG CONTENT for "Know More" Pop-up Modal
+const serviceDetailsContent = {
+    crane: {
+        title: 'Elevate Your Project with PD Crane Rentals!',
+        text: "Handle any heavy lift with confidence. Our state-of-the-art cranes and certified operators provide the power and precision you need to keep your project on schedule. From structural steel to heavy machinery, we ensure every lift is executed with maximum safety and efficiency. Trust us to take your project to the next level."
+    },
+    jcb: {
+        title: 'Build on a Strong Foundation with PD Excavation!',
+        text: 'Power through any terrain. Our rugged fleet of JCBs and excavators is the backbone of successful site preparation. Perfect for excavation, trenching, and demolition, our meticulously maintained machines deliver the performance you demand. Lay the groundwork for success with equipment you can depend on.'
+    },
+    interior: {
+        title: 'Redefine Your Space with PD Interior Designs!',
+        text: 'Your vision, brought to life. We transform ordinary spaces into stunning, functional environments that reflect your unique style. Our creative team manages every detail, from concept and layout to final installation, turning your home or business into a masterpiece. Experience the art of exceptional design.'
+    },
+    painting: {
+        title: 'Transform Your Property with a Perfect Finish!',
+        text: "Boost your property's value and curb appeal with a superior paint job. Our expert painters use only premium materials and proven techniques to deliver a flawless, durable finish that withstands the elements. For a look that’s both beautiful and long-lasting, book our professional painting service today."
+    }
+};
+
+const serviceModal = document.getElementById('serviceModal');
+serviceModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const serviceKey = button.getAttribute('data-service');
+    const content = serviceDetailsContent[serviceKey];
+
+    const modalTitle = serviceModal.querySelector('.modal-title');
+    const modalBody = serviceModal.querySelector('.modal-body');
+
+    if (content) {
+        modalTitle.textContent = content.title;
+        modalBody.textContent = content.text;
+    }
+});
+
+// Logic for Modal's "Get Quote" button
+const serviceModalInstance = new bootstrap.Modal(document.getElementById('serviceModal'));
+document.getElementById('modalGetQuoteBtn').addEventListener('click', function (e) {
+  e.preventDefault(); // Stop the '#' href from jumping to top
+  
+  // 1. Manually hide the modal
+  serviceModalInstance.hide();
+  
+  // 2. Smoothly scroll to the contact form
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
